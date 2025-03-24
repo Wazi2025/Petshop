@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Instruktor\\Desktop\\CSharp\\Petshop\\Petshop.csproj": {}
+    "c:\\Users\\Instruktor\\Desktop\\CSharp\\Petshop\\Petshop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Instruktor\\Desktop\\CSharp\\Petshop\\Petshop.csproj": {
+    "c:\\Users\\Instruktor\\Desktop\\CSharp\\Petshop\\Petshop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Instruktor\\Desktop\\CSharp\\Petshop\\Petshop.csproj",
+        "projectUniqueName": "c:\\Users\\Instruktor\\Desktop\\CSharp\\Petshop\\Petshop.csproj",
         "projectName": "Petshop",
-        "projectPath": "C:\\Users\\Instruktor\\Desktop\\CSharp\\Petshop\\Petshop.csproj",
+        "projectPath": "c:\\Users\\Instruktor\\Desktop\\CSharp\\Petshop\\Petshop.csproj",
         "packagesPath": "C:\\Users\\Instruktor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Instruktor\\Desktop\\CSharp\\Petshop\\obj\\",
+        "outputPath": "c:\\Users\\Instruktor\\Desktop\\CSharp\\Petshop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Instruktor\\AppData\\Roaming\\NuGet\\NuGet.Config"
