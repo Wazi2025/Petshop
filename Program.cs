@@ -12,7 +12,7 @@ class Program
     }
     static void Main(string[] args)
     {
-        Animal[] Animal = new Animal[4];
+        Animal[] Animal = new Animal[5];
         string? result;
 
         Initialize();
@@ -58,32 +58,64 @@ class Program
 
         void AddAnimals()
         {
-            //add animal
-            for (int i = 0; i < Animal.Length; i++)
+            bool ageIsANumber = false;
+            int counter = 0;
+
+            while (true)
             {
-                if (Animal[i].Name == null)
-                {
+                Console.WriteLine("Type 'exit' to quit or 'add' to add an animal");
+                result = Console.ReadLine();
 
-                    Console.WriteLine($"Add animal type: ");
-                    result = Console.ReadLine();
-                    Animal[i].Type = result;
-                    Console.WriteLine($"Add animal name: ");
-                    result = Console.ReadLine();
-                    Animal[i].Name = result;
-                    Console.WriteLine($"Add animal age: ");
-                    result = Console.ReadLine();
-                    int.TryParse(result, out int number);
-                    Animal[i].Age = number;
-                }
+                if (result == "exit")
+                    break;
 
-                else
+                if (result == "add")
                 {
-                    Console.WriteLine($"Sorry, we are unable to accomodate any more animals. The max number is {Animal.Length}");
+                    //add animal
+                    for (int i = 0; i < Animal.Length; i++)
+                    {
+                        if (Animal[i].Name == null)
+                        {
+                            Console.WriteLine($"Add animal type: ");
+                            result = Console.ReadLine();
+                            Animal[i].Type = result;
+                            Console.WriteLine($"Add animal name: ");
+                            result = Console.ReadLine();
+                            Animal[i].Name = result;
+
+                            while (ageIsANumber == false)
+                            {
+                                Console.WriteLine($"Add animal age: ");
+                                result = Console.ReadLine();
+
+                                //check that the user entered a number
+                                if (int.TryParse(result, out int number))
+                                {
+                                    Animal[i].Age = number;
+                                    ageIsANumber = true;
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"'{result}' is not a number.");
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            counter += 1;
+                            if (counter >= Animal.Length)
+                            {
+                                Console.WriteLine($"Sorry, we are unable to accomodate any more animals. The max number is {Animal.Length}");
+                                break; ;
+                            }
+
+                        }
+                    }
                 }
 
             }
         }
-
 
     }
 }
