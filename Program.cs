@@ -1,40 +1,42 @@
-﻿namespace Petshop;
+﻿using System;
 
-class Program
+namespace Petshop
 {
-
     public class Animal
     {
         public string? Name;
         public int Age;
         public string? Type;
-
     }
-    static void Main(string[] args)
+
+    class Program
     {
-        Animal[] Animal = new Animal[5];
-        string? result;
+        static Animal[] Animal = new Animal[5];
+        static string? result;
 
-        //calling functions
-        Initialize();
-        AddData();
-
-        while (true)
+        static void Main(string[] args)
         {
-            Console.WriteLine("Type 'list' to view current animals, 'add' to add an animal or 'exit' to quit");
-            result = Console.ReadLine();
+            // Calling methods
+            Initialize();
+            AddData();
 
-            if (result == "exit")
-                break;
+            while (true)
+            {
+                Console.WriteLine("Type 'list' to view current animals, 'add' to add an animal or 'exit' to quit");
+                result = Console.ReadLine();
 
-            if (result == "list")
-                ListAnimals();
+                if (result == "exit")
+                    break;
 
-            if (result == "add")
-                AddAnimals();
+                if (result == "list")
+                    ListAnimals();
+
+                if (result == "add")
+                    AddAnimals();
+            }
         }
 
-        void Initialize()
+        public static void Initialize()
         {
             for (int j = 0; j < Animal.Length; j++)
             {
@@ -42,7 +44,7 @@ class Program
             }
         }
 
-        void AddData()
+        public static void AddData()
         {
             Animal[0].Name = "Bones";
             Animal[0].Age = 2;
@@ -57,9 +59,8 @@ class Program
             Animal[2].Type = "mouse";
         }
 
-        void ListAnimals()
+        public static void ListAnimals()
         {
-            //list animals
             for (int i = 0; i < Animal.Length; i++)
             {
                 if (Animal[i].Name != null)
@@ -68,13 +69,12 @@ class Program
             Console.WriteLine();
         }
 
-        void AddAnimals()
+        public static void AddAnimals()
         {
             bool ageIsANumber = false;
             int counter = 0;
             bool breakLoop = false;
 
-            //add animal
             for (int i = 0; i < Animal.Length; i++)
             {
                 if (breakLoop)
@@ -82,20 +82,21 @@ class Program
 
                 if (Animal[i].Name == null)
                 {
-                    Console.WriteLine($"Add animal type: ");
+                    Console.WriteLine("Add animal type: ");
                     result = Console.ReadLine();
                     Animal[i].Type = result;
-                    Console.WriteLine($"Add animal name: ");
+
+                    Console.WriteLine("Add animal name: ");
                     result = Console.ReadLine();
                     Animal[i].Name = result;
+
                     ageIsANumber = false;
 
-                    while (ageIsANumber == false)
+                    while (!ageIsANumber)
                     {
-                        Console.WriteLine($"Add animal age: ");
+                        Console.WriteLine("Add animal age: ");
                         result = Console.ReadLine();
 
-                        //check that the user entered a number
                         if (int.TryParse(result, out int number))
                         {
                             Animal[i].Age = number;
@@ -106,6 +107,7 @@ class Program
                             Console.WriteLine($"'{result}' is not a number.");
                         }
                     }
+
                     while (result != "yes" && result != "no")
                     {
                         Console.WriteLine("Do you wish to add another animal ('yes' or 'no')");
@@ -117,23 +119,21 @@ class Program
                         }
                         else if (result == "yes")
                         {
-                            breakLoop = false;
                             AddAnimals();
+                            breakLoop = true;
+                            break;
                         }
                     }
-
                 }
                 else
                 {
                     counter += 1;
                     if (counter >= Animal.Length)
                     {
-                        Console.WriteLine($"Sorry, we are unable to accomodate any more animals. The max number is {Animal.Length}");
-                        break; ;
+                        Console.WriteLine($"Sorry, we are unable to accommodate any more animals. The max number is {Animal.Length}");
+                        break;
                     }
-
                 }
-
             }
         }
     }
